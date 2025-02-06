@@ -1,0 +1,1 @@
+CREATE TYPE "public"."product_type" AS ENUM('cement', 'microcement', 'cement-mix');

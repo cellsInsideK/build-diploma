@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { useHead } from '#imports'
+  import { navigateTo, useHead, useUserStore, watch } from '#imports'
   import AdminOrders from '~/components/admin/AdminOrders.vue';
   import AdminProducts from '~/components/admin/AdminProducts.vue';
   import AdminServices from '~/components/admin/AdminServices.vue';
@@ -8,6 +8,13 @@
   import UiSection from '~/components/UiSection.vue';
 
   useHead({ title: 'Админ панель' })
+  const userStore = useUserStore();
+
+  watch(() => userStore.isAuthenticated, (newVal) => {
+    if (newVal === false) {
+      return navigateTo('/')
+    }
+  })
 </script>
 
 <template>

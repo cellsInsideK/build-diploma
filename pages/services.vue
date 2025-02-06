@@ -22,8 +22,8 @@
     <h2 class="text-center text-4xl font-medium">Дополнительные услуги</h2>
     <div class=" flex flex-col gap-7 mt-8">
       <div class=" flex flex-row gap-7 bg-white rounded-lg">
-        <NuxtImg provider="cloudinary" class="hidden md:block object-cover" fit="cover" width="450" height="400"
-          placeholder loading="lazy" src="services1_prq4mh" alt="" />
+        <NuxtImg provider="cloudinary" class="hidden md:block object-cover max-w-md" fit="cover" width="450" placeholder
+          loading="lazy" src="services1_prq4mh" alt="" />
         <div class="flex flex-col justify-between gap-4 m-4 text-center uppercase">
           <h3 class="text-ui-accent font-bold text-lg">Доставка материалов</h3>
           <p>Мы предлагаем удобную и надежную доставку строительных материалов прямо на объект. Наша служба доставки
@@ -35,8 +35,8 @@
         </div>
       </div>
       <div class=" flex flex-row gap-7 bg-white rounded-lg">
-        <NuxtImg provider="cloudinary" class="hidden md:block object-cover" fit="cover" width="450" height="400"
-          placeholder loading="lazy" src="services2_fxcows" alt="" />
+        <NuxtImg provider="cloudinary" class="hidden md:block object-cover max-w-md" fit="cover" width="450" placeholder
+          loading="lazy" src="services2_fxcows" alt="" />
         <div class="flex flex-col justify-between gap-4 m-4 text-center uppercase">
           <h3 class="text-ui-accent font-bold text-lg">Консультация специалистов</h3>
           <p>Наши опытные специалисты всегда готовы ответить на ваши вопросы и помочь с выбором оптимальных решений.
@@ -49,8 +49,8 @@
         </div>
       </div>
       <div class=" flex flex-row gap-7 bg-white rounded-lg">
-        <NuxtImg provider="cloudinary" class="hidden md:block object-cover" fit="cover" width="450" height="400"
-          placeholder loading="lazy" src="services3_uwhxse" alt="" />
+        <NuxtImg provider="cloudinary" class="hidden md:block object-cover max-w-md" fit="cover" width="450" placeholder
+          loading="lazy" src="services3_uwhxse" alt="" />
         <div class="flex flex-col justify-between gap-4 m-4 text-center uppercase">
           <h3 class="text-ui-accent font-bold text-lg">Монтаж и установка</h3>
           <p>Мы не только поставляем материалы, но и выполняем монтажные работы любой сложности. Наши мастера быстро и

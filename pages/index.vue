@@ -3,6 +3,7 @@
   import { ref, useHead } from '#imports';
 
   import { Carousel, CarouselContent, CarouselItem } from '~/components/ui/carousel';
+  import Autoplay from 'embla-carousel-autoplay'
   import Button from '~/components/ui/button/Button.vue';
   import ServiceModal from '~/components/modals/ServiceModal.vue';
 
@@ -24,7 +25,7 @@
     return router.push('/about')
   }
 
-  useHead({ title: 'СтройМастер' })
+  useHead({ title: 'Betonika' })
 </script>
 
 <template>
@@ -32,7 +33,7 @@
   <section
     class=" bg-[url('https://res.cloudinary.com/detxwiyvk/image/upload/v1738600429/hero_b5iow8.png')] bg-cover bg-bottom py-20">
     <div class="container h-72 md:h-96 flex flex-col items-start justify-center">
-      <h2 class="text-4xl md:text-5xl font-medium">СтройМастер — мастерство, создающее комфорт!</h2>
+      <h2 class="text-4xl md:text-5xl font-medium">Betonika — мастерство, создающее комфорт!</h2>
       <Button @click="handleAbout" class="rounded-lg bg-ui-accent w-56 mt-24 px-8 py-5 text-white">Подробнее</Button>
     </div>
   </section>
@@ -69,8 +70,9 @@
           доверие для нас — главный приоритет.</p>
       </div>
     </div>
-    <Carousel class="pt-5 w-full block md:hidden" :opts="{
+    <Carousel class="pt-5 w-full block md:hidden" :plugins="[Autoplay({ delay: 3000 })]" :opts="{
       align: 'center',
+      loop: true
     }">
       <CarouselContent class="mx-[auto]">
         <CarouselItem>
@@ -179,8 +181,9 @@
   </UiSection>
   <UiSection>
     <h2 class="text-center text-4xl font-medium mb-9">Готовые объекты</h2>
-    <Carousel class="relative sm:container" :opts="{
+    <Carousel class="relative sm:container" :plugins="[Autoplay({ delay: 3000 })]" :opts="{
       align: 'center',
+      loop: true
     }">
       <CarouselContent class="flex ">
         <CarouselItem class="flex justify-center">

@@ -16,14 +16,14 @@
   const to = ref();
 
   const sortedProducts = computed(() => {
-    const min = from.value ?? 0;
-    const max = to.value ?? Infinity;
+    const min = ref(from.value || 0);
+    const max = ref(to.value || 100_000);
 
     const searchFilter = (item: SelectProduct) => search.value ? item.name.toLowerCase().includes(search.value.toLowerCase()) : item;
-    const priceFilter = (item: SelectProduct) => item.price >= min && item.price <= max;
+    const priceFilter = (item: SelectProduct) => item.price >= min.value && item.price <= max.value;
     const categoryFilter = (item: SelectProduct) => type.value ? item.type === type.value : item
 
-    return products.value.filter(item => searchFilter(item) && priceFilter(item) && categoryFilter(item));
+    return products.value.filter(item => searchFilter(item) && categoryFilter(item) && priceFilter(item));
   })
 
   useHead({ title: 'Продукция' })
@@ -67,9 +67,12 @@
       </div>
 
       <div class="flex flex-wrap gap-10 justify-center">
-        <template v-for="product in sortedProducts">
-          <UiProductCard :product />
+        <template v-if="sortedProducts.length > 0">
+          <template v-for="product in sortedProducts">
+            <UiProductCard :product />
+          </template>
         </template>
+        <template v-else>Кажется, ничего не нашлось 😢</template>
       </div>
     </UiSection>
   </UiLoader>

@@ -1,16 +1,20 @@
 <script setup lang="ts">
-  import { useCartStore } from '#build/imports';
+  import { useCartStore, useUserStore } from '#build/imports';
   import { toast } from 'vue-sonner';
   import type { SelectProduct } from '~/server/database/schema';
 
   const { product } = defineProps<{ product: SelectProduct }>();
 
   const cart = useCartStore();
+  const userStore = useUserStore();
 
   const handleAdd = () => {
-    cart.addProduct(product);
+    if (userStore.isAuthenticated) {
+      cart.addProduct(product);
 
-    return toast.success('Успешно', { description: 'Товар добавлен в корзину' })
+      return toast.success('Успешно', { description: 'Товар добавлен в корзину' })
+    }
+    return toast.error('Необходимо войти в аккаунт')
   }
 </script>
 

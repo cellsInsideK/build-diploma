@@ -74,6 +74,9 @@
         <Label for="address" class="mt-4">Адрес доставки</Label>
         <Input v-model="form.address" id="address" type="address" placeholder="Введите ваш адрес" />
       </template>
+      <template v-if="type === 'pickup'">
+        <p>Самовывоз из магазина по адресу: Москва, Московское ш., 25, корп. 1Л</p>
+      </template>
       <Button :disabled="loading" @click="handleConfirm" class="bg-ui-accent mt-4 max-w-72 mx-auto w-full">
         Оформить заказ
       </Button>

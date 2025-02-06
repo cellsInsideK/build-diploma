@@ -48,51 +48,51 @@
           <ul class=" flex flex-col gap-1.5">
             <template class="flex flex-col md:hidden gap-1.5">
               <li>
-                <NuxtLink to="/products">
+                <NuxtLink class="block border-b-2" to="/products">
                   Продукция
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/services">
+                <NuxtLink class="block px- border-b-2" to="/services">
                   Услуги
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/portfolio">
+                <NuxtLink class="block px- border-b-2" to="/portfolio">
                   Портфолио
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/contacts">
+                <NuxtLink class="block px- border-b-2" to="/contacts">
                   Контакты
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/about">
+                <NuxtLink class="block px- border-b-2" to="/about">
                   О компании
                 </NuxtLink>
               </li>
             </template>
             <template v-if="!userStore.isAuthenticated">
               <li>
-                <NuxtLink to="/sign-in">
+                <NuxtLink class="block px- border-b-2" to="/sign-in">
                   Вход
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/sign-up">
+                <NuxtLink class="block px- border-b-2" to="/sign-up">
                   Регистрация
                 </NuxtLink>
               </li>
             </template>
             <template v-else>
               <li>
-                <NuxtLink to="/profile">
+                <NuxtLink class="block px- border-b-2" to="/profile">
                   Профиль
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="/cart">
+                <NuxtLink class="block px- border-b-2" to="/cart">
                   Корзина
                 </NuxtLink>
               </li>

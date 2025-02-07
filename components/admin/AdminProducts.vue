@@ -65,6 +65,8 @@
           <TableHead class="text-white">Цена</TableHead>
           <TableHead class="text-white">Тип товара</TableHead>
           <TableHead class="text-white">Изображение</TableHead>
+          <TableHead class="text-white">Описание</TableHead>
+          <TableHead class="text-white">Количество</TableHead>
           <TableHead class="text-white">Дата создания</TableHead>
           <TableHead class="text-white">Дата обновления</TableHead>
           <TableHead class="text-white">Удалить</TableHead>
@@ -78,6 +80,8 @@
           <TableCell>{{ item.price }}</TableCell>
           <TableCell>{{ typeMap[item.type] }}</TableCell>
           <TableCell>{{ item.imageName }}</TableCell>
+          <TableCell>{{ item.description }}</TableCell>
+          <TableCell>{{ item.amount }}</TableCell>
           <TableCell>{{ getLocaleDate(item.createdAt!) }}</TableCell>
           <TableCell>{{ getLocaleDate(item.updatedAt!) }}</TableCell>
           <TableCell>

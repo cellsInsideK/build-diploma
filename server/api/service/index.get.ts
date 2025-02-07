@@ -1,4 +1,4 @@
-import { defineEventHandler, readBody } from "#imports";
+import { defineEventHandler } from "#imports";
 import { db } from "~/server/database/db";
 import { services } from "~/server/database/schema";
 

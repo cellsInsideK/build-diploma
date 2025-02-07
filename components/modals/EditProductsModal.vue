@@ -24,12 +24,14 @@
     form.price = newProduct.price;
     form.type = newProduct.type;
     form.imageName = newProduct.imageName;
+    form.description = newProduct.description;
+    form.amount = newProduct.amount;
     form.createdAt = newProduct.createdAt;
     form.updatedAt = newProduct.updatedAt;
   })
 
   const handleSubmit = async () => {
-    if (form.name === '' || form.price === 0 || form.imageName === '') {
+    if (form.name === '' || form.price === 0 || form.imageName === '' || form.amount === 0 || form.description === '') {
       return toast.error('Ошибка', { description: 'Необходимо заполнить все поля' });
     }
 
@@ -90,6 +92,11 @@
           </SelectGroup>
         </SelectContent>
       </Select>
+
+      <Label for="description">Описание</Label>
+      <Input v-model="form.description" id="description" type="text" placeholder="Введите описание товара" />
+      <Label for="amount">Количество</Label>
+      <Input v-model="form.amount" id="amount" type="number" placeholder="Введите количество товара" />
 
       <DialogFooter>
         <Button @click="handleSubmit" :disabled="isFormLoading" class="bg-ui-accent w-full">Изменить товар</Button>

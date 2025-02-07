@@ -1,12 +1,12 @@
-import { defineEventHandler, getRouterParam, } from "#imports";
-import { eq, inArray } from "drizzle-orm";
+import { defineEventHandler } from "#imports";
+import { asc, desc, eq, inArray } from "drizzle-orm";
 import { db } from "~/server/database/db";
 import { orderItems, orders, products, users } from "~/server/database/schema";
 
 export default defineEventHandler(async (event) => {
 
   try {
-    const userOrders = await db.select({orders: orders, user: users}).from(orders).innerJoin(users, eq(users.id, orders.userId));
+    const userOrders = await db.select({orders: orders, user: users}).from(orders).innerJoin(users, eq(users.id, orders.userId)).orderBy(desc(orders.createdAt));
 
     const items = await db.select({
       orderItem: orderItems,

@@ -6,7 +6,7 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event);
 
   try {
-    const res = await db.insert(products).values({name: body.name, price: body.price, type: body.type, imageName: body.imageName});
+    const res = await db.insert(products).values({name: body.name, price: body.price, type: body.type, imageName: body.imageName, description: body.description, amount: body.amount});
 
     return ({statusCode: 200, message: 'Товар создан'});
   }

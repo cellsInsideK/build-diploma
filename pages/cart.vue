@@ -1,10 +1,11 @@
 <script setup lang="ts">
-  import { navigateTo, useCartStore, useHead } from '#build/imports';
+  import { definePageMeta, navigateTo, useCartStore, useHead } from '#build/imports';
   import UiSection from '~/components/UiSection.vue';
 
   const cart = useCartStore();
 
-  useHead({ title: 'Корзина' })
+  useHead({ title: 'Корзина' });
+  definePageMeta({ middleware: 'auth' })
 </script>
 
 <template>

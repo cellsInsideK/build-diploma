@@ -1,6 +1,7 @@
 import { defineEventHandler, readBody } from "#imports";
+import { eq, sql } from "drizzle-orm";
 import { db } from "~/server/database/db";
-import { orderItems, orders } from "~/server/database/schema";
+import { orderItems, orders, products } from "~/server/database/schema";
 
 type CreateCart = {
   userId: string, 
@@ -15,6 +16,10 @@ export default defineEventHandler(async (event) => {
 
   try {
     const [orderCart] = await db.insert(orders).values({userId, tel, type, address, status: 'process'}).returning();
+
+    items.forEach(async (item) => {
+      await db.update(products).set({amount: sql`${products.amount} - ${item.quantity}` }).where(eq(products.id, item.id))
+    })
 
     const body = items.map(item => ({cartId: orderCart.id, productId: item.id, quantity: item.quantity}))
     const cartItems = await db.insert(orderItems).values(body);

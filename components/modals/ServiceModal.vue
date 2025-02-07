@@ -6,11 +6,15 @@
   import { Button } from '../ui/button';
   import { Input } from '../ui/input';
   import { Label } from '../ui/label';
+  import { useUserStore } from '#build/imports';
+
+  const userStore = useUserStore();
+  const name = userStore.isAuthenticated ? `${userStore.user?.surname} ${userStore.user?.name}` : '';
 
   const type = defineModel<string>('type');
   const isOpen = defineModel<boolean>('isOpen');
   const isLoading = ref(false);
-  const form = ref({ name: '', tel: '' });
+  const form = ref({ name: name, tel: '' });
 
   const handleSubmit = async () => {
     if (form.value.name === '' || form.value.tel === '') {

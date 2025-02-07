@@ -88,7 +88,7 @@
       </template>
     </div>
     <template v-else>
-      <p class="text-center">Вы еще не сделали заказ 😢</p>
+      <p class="text-center">Здесь пока нет заказов 😢</p>
     </template>
   </UiLoader>
 </template>

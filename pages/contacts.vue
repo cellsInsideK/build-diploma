@@ -1,14 +1,18 @@
 <script setup lang="ts">
   import { ref } from 'vue';
   import { toast } from 'vue-sonner';
-  import { navigateTo, useHead } from '#imports';
+  import { navigateTo, useHead, useUserStore } from '#imports';
   import { Input } from '~/components/ui/input';
   import { Label } from '~/components/ui/label';
   import { validateEmail, validateTel } from '#build/imports'
 
   useHead({ title: 'Связаться с нами' })
 
-  const form = ref({ surname: '', name: '', tel: '', email: '' });
+  const userStore = useUserStore();
+  const surname = userStore.isAuthenticated ? userStore.user?.surname : '';
+  const name = userStore.isAuthenticated ? userStore.user?.name : ''
+
+  const form = ref({ surname, name, tel: '', email: '', comment: '' });
   const loading = ref(false);
 
   const handleSubmit = async () => {
@@ -46,6 +50,8 @@
       <Input v-model="form.tel" id="tel" type="tel" placeholder="Введите ваш номер телефона" />
       <Label for="email" class="mt-4">E-mail</Label>
       <Input v-model="form.email" id="email" type="email" placeholder="Введите вашу почту" />
+      <Label for="comment" class="mt-4">Комментарий</Label>
+      <Input v-model="form.comment" id="comment" type="text" placeholder="Введите комментарий" />
       <Button :disabled="loading" @click="handleSubmit"
         class="bg-ui-accent mt-4 max-w-72 mx-auto w-full">Отправить</Button>
     </div>

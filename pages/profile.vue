@@ -1,5 +1,5 @@
 <script setup lang="ts">
-  import { navigateTo, useUserStore } from '#build/imports';
+  import { definePageMeta, navigateTo, useUserStore } from '#build/imports';
   import { useHead } from '#imports';
   import { onMounted, reactive, ref, watch } from 'vue';
   import { toast } from 'vue-sonner';
@@ -50,6 +50,7 @@
   })
 
   useHead({ title: 'Профиль' });
+  definePageMeta({ middleware: 'auth' })
 
   const getOrders = async () => {
     isLoading.value = true;

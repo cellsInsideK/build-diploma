@@ -1,10 +1,10 @@
 import { defineEventHandler, readBody } from "#imports";
 import { eq, or } from "drizzle-orm";
-import { db } from "../database/db";
-import { contacts, InsertContacts } from "../database/schema";
+import { db } from "../../database/db";
+import { contacts, InsertContacts } from "../../database/schema";
 
 export default defineEventHandler(async (event) => {
-  const {email, name, surname, tel} = await readBody<InsertContacts>(event);
+  const {email, name, surname, tel, comment} = await readBody<InsertContacts>(event);
 
   try {
     const exists = await db.select().from(contacts).where(
@@ -21,7 +21,7 @@ export default defineEventHandler(async (event) => {
       })
     }
 
-    await db.insert(contacts).values({email, name, surname, tel});
+    await db.insert(contacts).values({email, name, surname, tel, comment});
 
     return ({statusCode: 200, message: 'Заявка создана'})
   } catch (error) {

@@ -33,6 +33,7 @@ export const contacts = pgTable('contacts', {
   name: varchar('name', {length: 50}).notNull(),
   tel: varchar('tel', {length: 20}).notNull().unique(),
   email: varchar('email', {length: 50}).notNull().unique(),
+  comment: varchar('comment', {length: 250}),
 })
 
 export type InsertContacts = typeof contacts.$inferInsert;
@@ -57,6 +58,8 @@ export const products = pgTable('products', {
   price: integer('price').notNull(),
   imageName: varchar('image_name', {length:100}).notNull(),
   type: productTypeEnum().notNull(),
+  description: varchar('description').notNull(),
+  amount: integer('amount').notNull(), 
   createdAt: timestamp('created_at').defaultNow(),
   updatedAt: timestamp('updated_at').defaultNow(),
 })

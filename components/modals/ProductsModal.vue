@@ -14,10 +14,11 @@
   const isOpen = defineModel<boolean>('isOpen');
 
   const isFormLoading = ref(false);
-  const form = reactive<{ name: string, price: number, type: string, imageName: string }>({ name: '', price: 0, type: '', imageName: '' });
+  const form = reactive<{ name: string, price: number, type: string, imageName: string, description: string, amount: number }>(
+    { name: '', price: 0, type: '', imageName: '', description: '', amount: 0 });
 
   const handleSubmit = async () => {
-    if (form.name === '' || form.price === 0 || form.imageName === '' || form.type === '') {
+    if (form.name === '' || form.price === 0 || form.imageName === '' || form.type === '' || form.description === '' || form.amount == 0) {
       return toast.error('Ошибка', { description: 'Необходимо заполнить все поля' });
     }
 
@@ -78,6 +79,11 @@
           </SelectGroup>
         </SelectContent>
       </Select>
+
+      <Label for="description">Описание</Label>
+      <Input v-model="form.description" id="description" type="text" placeholder="Введите описание товара" />
+      <Label for="amount">Количество</Label>
+      <Input v-model="form.amount" id="amount" type="number" placeholder="Введите количество товара" />
 
       <DialogFooter>
         <Button @click="handleSubmit" :disabled="isFormLoading" class="bg-ui-accent w-full">Создать товар</Button>

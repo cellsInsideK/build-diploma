@@ -25,6 +25,9 @@ export const useCartStore = defineStore('cart', () => {
   
   const increaseItem = (id: string) => {
     const idx = cart.value.findIndex(item => item.id === id);
+
+    if (cart.value[idx].quantity === cart.value[idx].amount)
+      return;
     
     return cart.value[idx].quantity += 1;
   }

@@ -33,7 +33,7 @@
   const handleSubmit = async () => {
     let dirtyPassword = false;
 
-    if (form.name === '' || form.surname === '' || form.email === '' || form.login === '' || form.passwordHash === '') {
+    if (form.name.trim() === '' || form.surname.trim() === '' || form.email.trim() === '' || form.login.trim() === '' || form.passwordHash.trim() === '') {
       return toast.error('Ошибка', { description: 'Необходимо заполнить все поля' });
     }
 

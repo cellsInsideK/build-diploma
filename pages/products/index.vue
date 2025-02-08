@@ -19,11 +19,12 @@
     const min = ref(from.value || 0);
     const max = ref(to.value || 100_000);
 
+    const hasAmount = (item: SelectProduct) => item.amount > 0
     const searchFilter = (item: SelectProduct) => search.value ? item.name.toLowerCase().includes(search.value.toLowerCase()) : item;
     const priceFilter = (item: SelectProduct) => item.price >= min.value && item.price <= max.value;
     const categoryFilter = (item: SelectProduct) => type.value ? item.type === type.value : item
 
-    return products.value.filter(item => searchFilter(item) && categoryFilter(item) && priceFilter(item));
+    return products.value.filter(item => hasAmount(item) && searchFilter(item) && categoryFilter(item) && priceFilter(item));
   })
 
   useHead({ title: 'Продукция' })

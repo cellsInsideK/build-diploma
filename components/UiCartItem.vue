@@ -6,6 +6,11 @@
   const { item } = defineProps<{ item: CartItem }>();
   const cart = useCartStore();
 
+  watch(() => item.quantity, () => {
+    if (Number.isNaN(item.quantity)) {
+      item.quantity = 1;
+    }
+  })
 </script>
 
 <template>

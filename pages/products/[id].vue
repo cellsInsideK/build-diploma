@@ -16,6 +16,10 @@
 
   const handleAddCart = () => {
     if (userStore.isAuthenticated) {
+      if (data.value?.amount === 0) {
+        return toast.error('Товар закончился, ожидайте поставок')
+      }
+
       cartStore.addProduct(data.value!);
       toast.success('Товар добавлен в корзину');
 

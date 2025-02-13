@@ -1,6 +1,6 @@
 <script setup lang="ts">
-  import { onMounted } from 'vue';
-  import { useUserStore } from '#build/imports';
+  import { onMounted, watch } from 'vue';
+  import { navigateTo, useUserStore } from '#build/imports';
   import { Toaster } from './components/ui/sonner';
 
   const userStore = useUserStore();
@@ -8,6 +8,12 @@
   onMounted(async () => {
     const res = await $fetch('/api/session');
     userStore.user = res;
+  })
+
+  watch(() => userStore.user, (user) => {
+    if (user === undefined) {
+      return navigateTo('/');
+    }
   })
 </script>
 

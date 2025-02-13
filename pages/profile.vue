@@ -13,9 +13,9 @@
   type Orders = Array<SelectOrders & { items: Array<{ orderItem: SelectOrderItems, product: SelectProduct }> }>
 
   const orders = ref<Orders>([]);
-  const form = reactive({ name: '', surname: '', login: '' });
   const isLoading = ref(false);
   const userStore = useUserStore();
+  const form = reactive({ name: userStore.user?.name, surname: userStore.user?.surname, login: userStore.user?.login });
 
   const statusMap = {
     'process': 'В обработке',
@@ -25,6 +25,10 @@
   }
 
   const handleEditUser = async () => {
+    if (form.name?.trim() === '' || form.surname?.trim() === '' || form.login?.trim() === '') {
+      return toast.error('Нельзя оставить поля пустыми')
+    }
+
     const res = await $fetch('/api/user', { method: 'PATCH', body: { id: userStore.user?.id!, ...form } });
 
     if (res.statusCode === 200) {

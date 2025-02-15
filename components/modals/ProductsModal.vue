@@ -55,8 +55,10 @@
       <Input v-model="form.name" id="name" type="text" placeholder="Введите наименование товара" />
       <Label for="price">Цена</Label>
       <Input v-model="form.price" id="price" type="number" placeholder="Введите цену товара" />
-      <Label for="image">Изображение</Label>
 
+      <Label>Название изображения</Label>
+      <Input readonly v-model="form.imageName"></Input>
+      <Label for="image">Изображение</Label>
       <CldUploadWidget v-slot="{ open }" @success="upload" @error="" @result="" uploadPreset="ml_default">
         <button type="button" @click="open">Загрузить изображение</button>
       </CldUploadWidget>
@@ -79,7 +81,6 @@
           </SelectGroup>
         </SelectContent>
       </Select>
-
       <Label for="description">Описание</Label>
       <Input v-model="form.description" id="description" type="text" placeholder="Введите описание товара" />
       <Label for="amount">Количество</Label>
